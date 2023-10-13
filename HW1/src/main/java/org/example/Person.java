@@ -11,7 +11,7 @@ public class Person {
   private double height;
   private double weight;
   private double bmi;
-  private double age;
+  private int age;
   /**
    * This is Person constructor.
    * */
@@ -57,6 +57,8 @@ public class Person {
   public void setHeight(double height) throws Exception {
     if (height <= 0) {
       throw new Exception("身高不可為零或負");
+    } else if (height > 3){
+      throw new Exception("身高單位為公尺");
     }
     this.height = height;
   }
@@ -81,13 +83,20 @@ public class Person {
   public double getBmi() {
     this.bmi = this.weight / pow(this.height, 2);
     System.out.println("Bmi:" + this.bmi);
+    if (this.bmi < 18.5) {
+      System.out.println("體重過輕");
+    } else if (this.bmi > 18.5 && this.bmi < 24){
+      System.out.println("體重適中");
+    } else {
+      System.out.println("體重過重");
+    }
     return this.bmi;
   }
   /**
    * This is getAge function.
    * */
 
-  public double getAge() {
+  public int getAge() {
     int thisYear = 2023;
     this.age = thisYear - this.birthYear;
     System.out.println("age:" + this.age);
