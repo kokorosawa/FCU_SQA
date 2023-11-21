@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MLB.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW3</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">MLB.java</span></div><h1>MLB.java</h1><pre class="source lang-java linenums">package org.example;
+
+public class MLB {
+<span class="nc" id="L4">  public MLB() {</span>
+<span class="nc" id="L5">  }</span>
+  public int score(int inningA[],int inningB[],int playerA[],int playerB[]) throws Exception {
+<span class="nc" id="L7">    int res = 0;</span>
+<span class="nc bnc" id="L8" title="All 4 branches missed.">    if(inningA.length &lt; 9|| inningB.length &lt; 9){</span>
+<span class="nc" id="L9">      throw new Exception(&quot;局數小於九局&quot;);</span>
+    }
+<span class="nc" id="L11">    int scoreA = 0;</span>
+<span class="nc" id="L12">    int scoreB = 0;</span>
+<span class="nc bnc" id="L13" title="All 2 branches missed.">    for (int i = 0; i &lt; inningA.length; i++) {</span>
+<span class="nc bnc" id="L14" title="All 6 branches missed.">      if(i == 8 &amp;&amp; inningB[i] == -1 &amp;&amp; inningA.length == 9){</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">        if(scoreA &lt; scoreB){</span>
+<span class="nc" id="L16">          res = scoreB - scoreA;</span>
+
+        }else{
+<span class="nc" id="L19">          throw new Exception(&quot;不合理的提前結束&quot;);</span>
+        }
+<span class="nc bnc" id="L21" title="All 4 branches missed.">      }else if(i == 8 &amp;&amp; inningA.length &gt; 8){</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if(scoreA &gt; scoreB){</span>
+<span class="nc" id="L23">          throw new Exception(&quot;提前結束只可能出現在九下&quot;);</span>
+        }
+      }
+<span class="nc" id="L26">      scoreA += inningA[i];</span>
+<span class="nc" id="L27">      scoreB += inningB[i];</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">      if(i &gt; 8){</span>
+<span class="nc bnc" id="L29" title="All 4 branches missed.">        if(inningA[i] == -1 || inningB[i] == -1){</span>
+<span class="nc" id="L30">          throw new Exception(&quot;提前結束只可能出現在九下&quot;);</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        } else if(scoreA &lt; scoreB){</span>
+<span class="nc" id="L32">          res =  scoreB - scoreA;</span>
+
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        }else if(scoreA &gt; scoreB){</span>
+<span class="nc" id="L35">          res =  scoreA - scoreB;</span>
+
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        }else if(scoreA == scoreB){</span>
+<span class="nc" id="L38">          throw new Exception(&quot;不可以和局&quot;);</span>
+        }
+      }
+    }
+<span class="nc" id="L42">    int teamAsum = 0;</span>
+<span class="nc" id="L43">    int teamBsum = 0;</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">    for (int i = 0; i &lt; playerA.length; i++) {</span>
+<span class="nc" id="L45">      teamAsum += playerA[i];</span>
+<span class="nc" id="L46">      teamBsum += playerB[i];</span>
+    }
+<span class="nc" id="L48">    res = scoreA - scoreB;</span>
+<span class="nc bnc" id="L49" title="All 4 branches missed.">    if(teamAsum != scoreA || teamBsum != scoreB){</span>
+<span class="nc" id="L50">      throw new Exception(&quot;總分不符合&quot;);</span>
+    }
+<span class="nc bnc" id="L52" title="All 2 branches missed.">    if(res == 0){</span>
+<span class="nc" id="L53">      throw new Exception(&quot;不可以和局&quot;);</span>
+    }
+<span class="nc" id="L55">    return res;</span>
+}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
